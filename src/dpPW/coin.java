@@ -21,14 +21,14 @@ public class coin {
         if(sum>= coins.get(idx)){
             pick=rec(coins,sum- coins.get(idx),idx, dp);
         }
-
-//        int
         int notPick=rec(coins,sum,idx-1, dp);
 
 
 
         return dp[idx][sum]=pick+notPick;
     }
+
+
     public static void main(String[] args) {
         List<Integer> coin= List.of(2,5,3,6);
         int n= coin.size();
