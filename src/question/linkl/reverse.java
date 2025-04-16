@@ -58,6 +58,53 @@ public static void displayr(ListNode head){
         System.out.println(mid.val);
         return mid;
     }
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode temp= head;
+        ListNode temp2= head;
+        int len=0;
+        while(temp != null){
+            temp=temp.next;
+            len++;
+        }
+        System.out.println(len);
+        System.out.println(head.val);
+        for (int i = 0; i < len; i++) {
+            if (n==len){
+                temp2=temp2.next;
+                return temp2;
+            }
+            if (i==len-n-1){
+                temp2.next=temp2.next.next;
+                return head;
+            }
+            temp2=temp2.next;
+        }
+
+        return head;
+    }
+
+    public static boolean hasCycle(ListNode head) {
+        ListNode fast=head;
+        ListNode slow=head;
+//        while(fast != null){
+//            if(fast.next==null){
+//                return false;
+//            }
+//            slow=slow.next;
+//            fast=fast.next.next;
+//            if (fast==slow){
+//                return true;
+//            }
+//        }
+        while(fast.next != null && fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if (fast==slow){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
 
         ListNode a= new ListNode(10);
@@ -74,10 +121,15 @@ public static void displayr(ListNode head){
         b.next=c;
         c.next=d;
         d.next=e;
+        e.next=b;
 //        e.next=f;
 //        reverseList(a);
-middleNode(a);
+//middleNode(a);
+//  ListNode temp= removeNthFromEnd(a,1);
+//  displayr(temp);
 //        displayr(a);
+
+        System.out.println(hasCycle(a));
 
     }
 }
