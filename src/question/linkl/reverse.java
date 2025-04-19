@@ -1,6 +1,6 @@
 package question.linkl;
 
-import Linklist.list1;
+
 
 public class reverse {
     public static class ListNode {
@@ -104,6 +104,43 @@ public static void displayr(ListNode head){
             }
         }
         return false;
+    }
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode node= new ListNode(0);
+        // node.val=-1;
+        ListNode temp=node;
+        // node=node.next;
+
+        while(list1 != null || list2 != null){
+            if(list1 == null && list2 == null){
+                return temp;
+            }
+            else if(list1 == null){
+                node.val=list2.val;
+                list2= list2.next;
+            }
+            else if(list2 == null){
+                node.val=list1.val;
+                list1= list1.next;
+            }
+            else{
+                if(list1.val <=list2.val ){
+                    // node=new ListNode(list1.val);
+                    node.val = list1.val;
+                    list1=list2.next;
+                }
+                else{
+                    // node=new ListNode(list2.val);
+                    node.val = list2.val;
+                    list2=list2.next;
+                }
+            }
+            node=node.next;
+        }
+
+        return temp;
+
+
     }
     public static void main(String[] args) {
 
