@@ -6,12 +6,12 @@ public class facKnapsack {
     static class Item{
         int val;
         int weight;
-        float percent;
+        double percent;
 
         Item(int val,int weight){
             this.val=val;
             this.weight=weight;
-            this.percent= (float) val /weight;
+            this.percent= (double) val /weight;
         }
     }
     static double fractionalKnapsack(int[] values, int[] weights, int W) {
@@ -22,15 +22,29 @@ public class facKnapsack {
         for (int i = 0; i < n; i++) {
             li.add(new Item(values[i], weights[i]));
         }
-        li.sort((a,b) -> Float.compare(b.percent, a.percent));
+        li.sort((a,b) -> Double.compare(b.percent, a.percent));
         for (int i = 0; i < n; i++) {
-            System.out.println(li.get(i).val);
-            System.out.println(li.get(i).weight);
+            System.out.println("val: "+li.get(i).val);
+            System.out.println("weight: "+li.get(i).weight);
             System.out.println(li.get(i).percent);
             System.out.println("..........");
         }
-
-
+        int i=0;
+        while(W != 0 && i<=n){
+            System.out.println(W);
+            int temp=li.get(i).weight;
+            if (W>=temp){
+                ans+=li.get(i).val;
+                W-=temp;
+                i++;
+            }
+            else{
+                 ans+=W*li.get(i).percent;
+                 W=0;
+            }
+            System.out.println("ans: "+ans);
+            System.out.println("after: "+W);
+        }
     return ans;
     }
 

@@ -20,7 +20,6 @@ class heapL<T extends Comparable<T>> {
     private int parent(int index){
         return (index-1)/2;
     }
-
     private int left(int index){
         return (index*2)+1;
     }
