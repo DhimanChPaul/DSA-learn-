@@ -19,6 +19,7 @@ public class maxCombi {
         List<Integer> li= new ArrayList<>();
         PriorityQueue<pair> pq= new PriorityQueue<>((a,b)-> b.sum-a.sum);
         Set<String> st= new HashSet<>();
+        //here we use set for one case where x==y the midlle of every iteration
 
         Arrays.sort(A);
         for (int i = 0; i < N; i++) {
